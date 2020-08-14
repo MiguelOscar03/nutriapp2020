@@ -1,0 +1,138 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Selección de cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button>Nuevo</ion-button>
+  <ion-list>
+
+    <ion-item routerLink="/tabs/tab1">
+
+      <ion-avatar slot="start">
+        <img src="https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg">
+      </ion-avatar>
+      <ion-label>
+        <h2>Andres Aquilino </h2>
+        <h3>Hermosillo</h3>
+        <p>36 años</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item routerLink="/tabs/tab1">
+      <ion-avatar slot="start">
+        <img src="https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg">
+      </ion-avatar>
+      <ion-label>
+        <h2>Francisco Alan Espinoza</h2>
+        <h3>Navojoa</h3>
+        <p>32 años</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content> -->
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title>
+      Inicio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <p>Favor de seleccionar un paciente en caso de no existir, agregar uno</p>
+  <form [formGroup]="studentForm" (ngSubmit)="CreateRecord()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button type="submit" [disabled]="studentForm.invalid">
+        <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+        &nbsp;Crear
+      </ion-button>
+    </ion-item>
+  </form>
+
+    <ion-card *ngFor="let item of studentList">
+      <span *ngIf="!item.isEdit; else elseBlock">
+        <ion-card-header>
+          <ion-card-title
+            ><ion-button (click)="Enviar(item.id, item.Name)"
+              >{{item.Name}}
+            </ion-button></ion-card-title
+          ><br />
+  
+          <!-- <ion-card-subtitle>From: {{item.Address}}</ion-card-subtitle> -->
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button
+            shape="round"
+            color="secondary"
+            size="small"
+            (click)="EditRecord(item)"
+          >
+            <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+          </ion-button>
+          <ion-button
+            shape="round"
+            color="danger"
+            size="small"
+            (click)="RemoveRecord(item.id)"
+          >
+            <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </span>
+      <ng-template  g-template #elseBlock>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  Editar
+                </ion-col>
+                <ion-col>
+                  <ion-button
+                    fill="solid"
+                    color="medium"
+                    size="small"
+                    (click)="item.isEdit = false"
+                  >
+                    Cancelar
+                  </ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button
+                    fill="solid"
+                    color="success"
+                    size="small"
+                    (click)="UpdateRecord(item)"
+                  >
+                    Actualizar
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label><strong>Name</strong></ion-label>
+            <ion-input type="text" [(ngModel)]="item.EditName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Age</strong></ion-label>
+            <ion-input type="text" [(ngModel)]="item.EditAge"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Address</strong></ion-label>
+            <ion-input type="text" [(ngModel)]="item.EditAddress"></ion-input>
+          </ion-item>
+        </ion-card-content>
+      </ng-template>
+    </ion-card>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Datos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input placeholder="Francisco Alan Espinoza Zallas"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input placeholder="alanez@outlook.com"></ion-input>
+  </ion-item>
+
+<ion-button color="success" routerLink="/login">Guardar</ion-button>
+<ion-button color="danger" routerLink="/" >Cancelar</ion-button>
+
+<p>
+  <ion-button size="large" routerLink="/pacientes">Volver a selección del paciente</ion-button>
+
+  <ion-button size="large" routerLink="/login">Cerrar sesión</ion-button>
+
+</p>
+
+
+  <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
+</ion-content>

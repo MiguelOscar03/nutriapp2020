@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial clinico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content [fullscreen]="true">
+    <h1>{{paciente}}</h1>
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Historial clinico</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-item>
+      <ion-label position="floating">Ciudad</ion-label>
+      <ion-input placeholder="[Escribir ciudad]"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input placeholder="[Escribir dirección]"></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-radio-group value="biff">
+        <ion-list-header>
+          <ion-label>Sexo</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Masculino</ion-label>
+          <ion-radio slot="start" value="biff"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Femenino</ion-label>
+          <ion-radio slot="start" value="griff"></ion-radio>
+        </ion-item>
+
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-list>
+      <ion-radio-group value="biff2">
+        <ion-list-header>
+          <ion-label>Seguro médico</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Si</ion-label>
+          <ion-radio slot="start" value="biff2"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio slot="start" value="griff2"></ion-radio>
+        </ion-item>
+
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-item *ngIf=" seguro ">
+      <ion-label position="floating">¿Cuál?</ion-label>
+      <ion-input placeholder="[Escribe el nombre de tu seguro medico en caso de que tu respuesta haya sido afirmativa]"></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-radio-group value="biff3">
+        <ion-list-header>
+          <ion-label>Jefe de familia</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Si</ion-label>
+          <ion-radio slot="start" value="biff3"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio slot="start" value="griff3"></ion-radio>
+        </ion-item>
+
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-list>
+      <ion-radio-group value="biff4">
+        <ion-list-header>
+          <ion-label>Estado civil</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Casado</ion-label>
+          <ion-radio slot="start" value="biff4"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Soltero</ion-label>
+          <ion-radio slot="start" value="griff4"></ion-radio>
+        </ion-item>
+
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Fecha de nacimiento</ion-label>
+      <ion-datetime value="1995-04-15" min="1990-02" max="2000"
+        [dayShortNames]="customDayShortNames"
+        displayFormat="DDD. MMM DD, YY"
+        monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"></ion-datetime>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Cantidad de integrantes en la casa donde vive</ion-label>
+      <ion-input placeholder="[Escribe la cantidad de integrantes en la casa donde vive]"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ocupación</ion-label>
+      <ion-input placeholder="[Escribe tu ocupación]"></ion-input>
+    </ion-item>
+  
+  <ion-button color="success" routerLink="/login">Guardar</ion-button>
+  <ion-button color="danger" routerLink="/" >Cancelar</ion-button>
+
+  
+</ion-content>

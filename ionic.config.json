@@ -1,0 +1,7 @@
+{
+  "name": "nutriAPP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
