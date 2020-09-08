@@ -61,7 +61,7 @@
       <span *ngIf="!item.isEdit; else elseBlock">
         <ion-card-header>
           <ion-card-title
-            ><ion-button (click)="Enviar(item.id, item.Name)"
+            ><ion-button (click)="Enviar(item.id, item.Name, item.PacienteId)"
               >{{item.Name}}
             </ion-button></ion-card-title
           ><br />

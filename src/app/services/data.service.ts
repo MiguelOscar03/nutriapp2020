@@ -7,7 +7,8 @@ export class DataService {
 
   private dataUser = {
     uid: '',
-    email: ''
+    email: '',
+    pacienteId: ''
   };
 
   constructor() { }
@@ -19,5 +20,13 @@ export class DataService {
 
   getData(){
     return this.dataUser;
+  }
+
+  setPacienteId( pacienteId ) {
+    this.dataUser.pacienteId = pacienteId;
+  }
+
+  getPacienteId() {
+    return this.dataUser.pacienteId;
   }
 }

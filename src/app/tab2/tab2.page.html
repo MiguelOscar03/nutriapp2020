@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Historico
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pacientes"></ion-back-button>
+      <ion-title>Historico</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -15,12 +16,20 @@
 
 
   <ion-card>
-    <ion-item routerLink="/tabs/eval" class="ion-activated">
+
+    <ion-item *ngFor="let item of dates">
+      <ion-icon name="book" slot="start"></ion-icon>
+      <ion-label (click)="sendTestData( item.fecha, item.rondas, item.Slaughter, item.Yuhasz, item.GrasaCarter, item.Faulkner, item.DurninRahama, item.DurningWomersley )" >Evaluación <br>
+        {{ item.fecha }} 
+      </ion-label>
+    </ion-item>
+
+    <!-- <ion-item routerLink="/tabs/eval" class="ion-activated">
       <ion-icon name="book" slot="start"></ion-icon>
       <ion-label>Evaluación 24/Junio/2020 12:00:00 </ion-label>
-    </ion-item>
+    </ion-item> -->
   
-    <ion-item routerLink="/tabs/eval" class="ion-activated">
+    <!-- <ion-item routerLink="/tabs/eval" class="ion-activated">
       <ion-icon name="book" slot="start"></ion-icon>
       <ion-label>Evaluación 22/Junio/2020 10:00:00 </ion-label>
     </ion-item>
@@ -28,7 +37,7 @@
     <ion-item routerLink="/tabs/eval" class="ion-activated">
       <ion-icon name="book" slot="start"></ion-icon>
       <ion-label>Evaluación 20/Junio/2020 10:00:00 </ion-label>
-    </ion-item>
+    </ion-item> -->
 
   </ion-card>
 

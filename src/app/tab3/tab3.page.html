@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Perfil
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pacientes"></ion-back-button>
+      <ion-title>Perfil</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -23,16 +24,16 @@
     <ion-input placeholder="alanez@outlook.com"></ion-input>
   </ion-item>
 
-<ion-button color="success" routerLink="/login">Guardar</ion-button>
-<ion-button color="danger" routerLink="/" >Cancelar</ion-button>
-
-<p>
-  <ion-button size="large" routerLink="/pacientes">Volver a selección del paciente</ion-button>
-
-  <ion-button size="large" routerLink="/login">Cerrar sesión</ion-button>
-
-</p>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-button color="success" expand="full">Guardar</ion-button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-button color="danger" expand="full">Cerrar sesión</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
 </ion-content>

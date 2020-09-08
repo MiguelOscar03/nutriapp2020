@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      EVALUACIÓN
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pacientes"></ion-back-button>
+      <ion-title>EVALUACIÓN</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content [fullscreen]="true">
 
@@ -16,7 +16,7 @@
     </ion-toolbar>
   </ion-header>
 
-<h3>
+<h3 class="ion-padding">
   Paciente: {{ paciente }} 
   <div [(ngModel)]="paciente" ngDefaultControl></div>
 </h3>

@@ -5,7 +5,7 @@ import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { constantes } from "../../constantes/constantes";
-import { DataService } from "../services/data.service";
+import { DataService } from '../services/data.service';
 
 interface StudentData {
   Name: string;
@@ -28,17 +28,12 @@ export class SeleccionPage implements OnInit {
     public fb: FormBuilder,
     public router: Router,
     public constantes: constantes,
-    // private data: DataService
+    private ds: DataService
   ) {
     this.studentData = {} as StudentData;
   }
 
   ngOnInit() {
-    // this.studentForm = this.fb.group({
-    //   Name: ['', [Validators.required]],
-    //   Age: ['', [Validators.required]],
-    //   Address: ['', [Validators.required]]
-    // })
     this.studentForm = this.fb.group({
       Name: ["", [Validators.required]],
     });
@@ -78,15 +73,17 @@ export class SeleccionPage implements OnInit {
     record["Address"] = recordRow.EditAddress;
     this.firebaseService.update_paciente(recordRow.id, record);
     recordRow.isEdit = false;
+    console.log( recordRow.id );
   }
 
-  Enviar(rowID, nombre) {
+  Enviar(rowID, nombre, pacienteId) {
     // this.paciente = auth.email;
     // this.id = this.correo;
 
     //this.router.navigateByUrl('/(tabs/tab1)');
     this.constantes.nombre = nombre;
     this.constantes.id = rowID;
+    this.ds.setPacienteId( pacienteId );
     this.router.navigate(["/tabs/tab1"]);
   }
 
@@ -99,65 +96,11 @@ export class SeleccionPage implements OnInit {
           isEdit: false,
           Name: e.payload.doc.data()['Name'],
           Age: e.payload.doc.data()['Age'],
-          Address: e.payload.doc.data()['Address']          
+          Address: e.payload.doc.data()['Address'],
+          PacienteId: e.payload.doc.data()['PacienteId']          
         }
       })
     })
-
-
-    // this.firebaseService.read_pacientes().subscribe((data) => {
-    //   this.studentList = data.map((e) => {
-    //       return {
-    //         id: e.payload.doc.id,
-    //         isEdit: false,
-    //         Name: e.payload.doc.data()['Name'],
-    //         Age: e.payload.doc.data()['Age'],
-    //         Address: e.payload.doc.data()['Address']
-    //       }; // end return
-    //   });
-    // });
-
-    // this.firebaseService.read_pacientes();
-    
-
-    // this.firebaseService.read_pacientes().get()
-    // .then( e => {
-    //   this.studentList = e.docChanges().map( data => {
-    //     return {
-    //       id: data.doc.id,
-    //       isEdit: false,
-    //       Name: data.doc.data()['Name'],
-    //       Age: data.doc.data()['Age'],
-    //       Address: data.doc.data()['Address']
-    //     }
-    //   })
-    // })
-
-    // this.firebaseService.read_pacientes().get()
-    // .then( e => {
-    //   this.studentList = e.docs.map( data => {
-    //     return {
-    //       id: data.id,
-    //       isEdit: false,
-    //       Name: data.data()['Name'],
-    //       Age: data.data()['Age'],
-    //       Address: data.data()['Address']
-    //     }
-    //   })
-    // })
-
-
-    // this.studentList = []
-    // this.firebaseService.read_pacientes().onSnapshot( data => {
-    //   data.forEach( val => {
-    //     this.studentList.push({
-    //       id: val.id,
-    //       isEdit: false,
-    //       Name: val.data()['Name'],
-    //       Age: val.data()['Age'],
-    //       Address: val.data()['Address']          
-    //     })
-
 
   }
 
